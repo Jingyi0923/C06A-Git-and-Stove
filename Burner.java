@@ -29,7 +29,8 @@ public class Burner{
 	public Temperature getMyTemperature() {
 		return myTemperature;
 	}
-
+	
+	// this method increase the setting of the burner
 	public void plusButton() {
 		switch (mySetting) {
 			case OFF:
@@ -46,6 +47,7 @@ public class Burner{
 		timer = TIME_DURATION;
 	}
 
+	// this method decrease the setting of button
 	public void minusButton() {
 		switch (mySetting) {
 			case HIGH:
@@ -64,6 +66,7 @@ public class Burner{
 
 	public void updateTemperature() {
 		timer--;
+		// when is setting LOW, and timer is 0, decrease the temperature to warm
 		if (mySetting == Setting.LOW) {
 			if (timer == 0) {
 				switch (myTemperature) {
@@ -83,6 +86,7 @@ public class Burner{
 				}
 			}
 		}
+		// when setting is MEDIUM, and timer is 0, increase the temperature from cold to warm, warm to hot, decrease from blazing to hot
 		else if (mySetting == Setting.MEDIUM) {
 			if (timer == 0) {
 				switch (myTemperature) {
@@ -100,6 +104,7 @@ public class Burner{
 				}
 			}
 		}
+		// when setting is HIGH, and timer is 0, increase cold to warm, warm to hot, and hot to blazing
 		else if (mySetting == Setting.HIGH) {
 			if (timer == 0) {
 				switch (myTemperature) {
@@ -119,6 +124,7 @@ public class Burner{
 				}
 			}
 		}
+		// when setting is off, and timer is 0, decrease blazing to hot, warm to cold, and hot to warm
 		else {
 			if (timer == 0) {
 				switch (myTemperature) {
